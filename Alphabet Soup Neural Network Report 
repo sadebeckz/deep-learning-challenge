@@ -1,0 +1,61 @@
+Alphabet Soup Neural Network Report
+Overview of the Analysis
+The goal of this project was to build a deep learning model that can help Alphabet Soup, a nonprofit foundation, decide which applicants are more likely to be successful with the funding they receive. We used a dataset of past applicants and trained a binary classifier (yes or no outcome) to make predictions based on several features like the type of organization, funding amount, and use case.
+
+Data Preprocessing
+Target variable: IS_SUCCESSFUL, which shows whether the applicant was successful or not.
+
+Feature variables: All other columns except EIN and NAME, which were ID columns that weren’t useful for modeling.
+
+Removed columns: EIN and NAME
+
+We also looked at the APPLICATION_TYPE and CLASSIFICATION columns. Some of the categories only had a few rows, so we grouped them into a new value called "Other" to make the model easier to train.
+
+After that, we used pd.get_dummies() to turn all categorical values into numbers, and we scaled the data using StandardScaler() so the model could train properly.
+
+Model Design
+Input features: Based on the number of columns after preprocessing (around 40–50)
+
+Hidden Layers:
+
+First layer: 80 neurons, ReLU activation
+
+Second layer: 30 neurons, ReLU activation
+
+Output Layer:
+
+1 neuron with Sigmoid activation function for binary classification
+
+Loss function: Binary Crossentropy
+
+Optimizer: Adam
+
+Epochs: 100
+
+Model Performance
+After training the model and evaluating it with the test data, the results were:
+
+Loss: [Insert loss value here, e.g. 0.56]
+
+Accuracy: [Insert accuracy here, e.g. 72%]
+
+The model didn’t quite reach the target accuracy of 75%, but it came close.
+
+Optimization Attempts
+To try to improve the model, I made some changes, including:
+
+Increasing the number of neurons in the hidden layers
+
+Trying a third hidden layer
+
+Regrouping more of the rare categories in the CLASSIFICATION and APPLICATION_TYPE columns
+
+Adjusting the number of epochs
+
+Even though I made a few changes, the model didn’t quite pass the 75% accuracy mark, but the accuracy did improve slightly.
+
+Summary and Recommendation
+This project showed that a neural network can be used to help Alphabet Soup predict which applicants might use their funding effectively. However, tuning neural networks can be tricky and take a lot of trial and error.
+
+If I were to try this again, I would also test some simpler models like Random Forest or XGBoost. These models can often perform well without needing as much tuning and can also tell you which features are the most important, which is helpful for a business like Alphabet Soup when making decisions.
+
